@@ -1,7 +1,6 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import vetlensIcon from '@/assets/icons/vetlens.svg?no-inline';
-import medilensIcon from '@/assets/icons/medilens-icon.svg?no-inline';
 const features = [
   { icon: 'ph-magnifying-glass', title: 'Encuentra medicamentos veterinarios', details: 'La búsqueda podrá localizar medicamentos por nombre, laboratorio, principio activo, número de registro, código nacional o especie de destino.' },
   { icon: 'ph-file-text', title: 'Consulta información oficial', details: 'Estamos preparando el acceso a datos del registro veterinario, como presentaciones, condiciones de prescripción, indicaciones y documentación oficial.' },
@@ -21,11 +20,38 @@ const faq = [
 ---
 <SiteLayout title="VET lens — Información veterinaria, más fácil de consultar" seoTitle="VET lens — Información oficial de medicamentos veterinarios" description="VET lens prepara una nueva forma de consultar información oficial sobre medicamentos veterinarios. La app está en desarrollo.">
 <main>
-  <section class="home-hero"><div class="hero-copy"><div class="hero-title-group"><p class="hero-brand"><span class="hero-brand-primary">VET</span> <span class="hero-brand-accent">lens</span></p><h1>Información veterinaria, más fácil de consultar</h1></div>
-    <p class="hero-tagline">Estamos preparando una app para consultar información oficial sobre medicamentos veterinarios, con datos organizados por especie y presentación.</p>
-    <p class="launch-status"><i class="ph ph-hammer" aria-hidden="true"></i><strong>Próximamente</strong><span>La app está en desarrollo.</span></p>
-    <div class="hero-notes" aria-label="Información del proyecto"><span class="hero-note"><i class="ph ph-shield-check" aria-hidden="true"></i> Datos del registro oficial CIMA Vet</span><span class="hero-note"><i class="ph ph-paw-print" aria-hidden="true"></i> Medicamentos veterinarios</span></div>
-  </div><div class="hero-media"><div class="hero-image-glow" aria-hidden="true"></div><figure class="vetlens-launch-preview"><img class="hero-image" src={vetlensIcon} alt="Logotipo de VET lens" width="220" height="220" /><figcaption><span class="launch-preview-kicker">En desarrollo</span><strong>VET lens</strong><span>Información oficial veterinaria</span></figcaption></figure></div></section>
+  <section class="home-hero">
+    <div class="hero-copy">
+      <div class="hero-title-group">
+        <p class="hero-brand"><span class="hero-brand-primary">VET</span> <span class="hero-brand-accent">lens</span></p>
+        <h1>Información veterinaria, más fácil de consultar</h1>
+      </div>
+      <p class="hero-tagline">Estamos preparando una app para consultar información oficial sobre medicamentos veterinarios, con datos organizados por especie y presentación.</p>
+      <p class="launch-status"><i class="ph ph-hammer" aria-hidden="true"></i><strong>Próximamente</strong><span>La app está en desarrollo.</span></p>
+      <div class="hero-notes" aria-label="Información del proyecto">
+        <span class="hero-note"><i class="ph ph-shield-check" aria-hidden="true"></i> Datos del registro oficial CIMA Vet</span>
+        <span class="hero-note"><i class="ph ph-paw-print" aria-hidden="true"></i> Medicamentos veterinarios</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-image-glow" aria-hidden="true"></div>
+      <figure class="vetlens-abstract-visual">
+        <div class="vetlens-abstract-art" aria-hidden="true">
+          <span class="abstract-halo"></span>
+          <span class="abstract-orbit abstract-orbit-wide"></span>
+          <span class="abstract-orbit abstract-orbit-tall"></span>
+          <span class="abstract-orbit-dot abstract-orbit-dot-one"></span>
+          <span class="abstract-orbit-dot abstract-orbit-dot-two"></span>
+          <span class="abstract-node abstract-node-species"><i class="ph ph-paw-print"></i></span>
+          <span class="abstract-node abstract-node-care"><i class="ph ph-first-aid-kit"></i></span>
+          <span class="abstract-node abstract-node-data"><i class="ph ph-shield-check"></i></span>
+          <span class="abstract-source"><i class="ph ph-shield-check"></i> CIMA Vet</span>
+          <span class="abstract-logo"><img src={vetlensIcon} alt="" width="210" height="210" /></span>
+        </div>
+        <figcaption class="visually-hidden">Ilustración abstracta de VET lens: su símbolo rodeado de elementos que representan el cuidado veterinario, las especies y los datos oficiales.</figcaption>
+      </figure>
+    </div>
+  </section>
   <section class="feature-section" aria-label="Lo que prepara VET lens"><header class="launch-section-heading"><span class="page-eyebrow">En preparación</span><h2>¿Qué ofrecerá la app?</h2><p>Estas funciones están en desarrollo y se concretarán antes del lanzamiento.</p></header><div class="feature-grid">{features.map((feature) => <article class="feature-card feature-card-upcoming"><div class="feature-icon" aria-hidden="true"><i class:list={['ph', feature.icon]}></i></div><span class="feature-status">Próximamente</span><h3>{feature.title}</h3><p>{feature.details}</p></article>)}</div></section>
   <section class="custom-home-content"><section class="faq-wrapper" aria-labelledby="faq-heading"><h2 id="faq-heading">Preguntas frecuentes</h2><div class="faq">{faq.map((item) => <details><summary>{item.question}</summary><p set:html={item.answer}></p></details>)}</div></section>
     <section class="sponsorship-wrapper" aria-labelledby="sponsorship-heading"><h2 id="sponsorship-heading">Colabora con el proyecto</h2><div class="sponsorship"><p>VET lens está en desarrollo. Si quieres apoyar el proyecto o proponer una colaboración, escríbenos.</p><a class="custom-button" href="/patrocina-vet-lens">Colabora con <span>VET lens</span></a></div></section>
@@ -33,16 +59,15 @@ const faq = [
     {/* Newsletter desactivada hasta configurar un servicio para VET lens. */}
   </section>
   <section class="related-app-section" aria-labelledby="related-app-title">
-    <div class="related-app-card">
-      <img src={medilensIcon} alt="" width="38" height="38" />
+    <article class="related-app-card">
       <div class="related-app-copy">
         <span class="page-eyebrow">También del equipo</span>
         <h2 id="related-app-title">¿Buscas información sobre medicamentos de uso humano?</h2>
         <p>Conoce MEDI lens, nuestra app para consultar información sobre medicamentos para personas.</p>
       </div>
       <a class="custom-button related-app-link" href="https://medilens.es" target="_blank" rel="noopener noreferrer">
-        Descubre MEDI lens <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        Descubre MEDI lens <i class="ph ph-arrow-square-out" aria-hidden="true"></i>
       </a>
-    </div>
+    </article>
   </section>
 </main></SiteLayout>
