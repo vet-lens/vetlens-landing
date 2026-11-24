@@ -5,6 +5,8 @@
   **Información veterinaria, más fácil de consultar**
 
   <p>App en desarrollo · Próximamente</p>
+
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/f9041c45-c103-4ce7-a625-9b24cd62f072/deploy-status)](https://app.netlify.com/projects/vetlens/deploys)
 </div>
 
 ---
