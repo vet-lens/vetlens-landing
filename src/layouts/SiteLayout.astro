@@ -1,0 +1,35 @@
+---
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import faviconSvg from '@/assets/icons/vetlens.svg?no-inline';
+import '@fontsource-variable/akshar';
+import '@phosphor-icons/web/regular';
+import aksharLatin from '@fontsource-variable/akshar/files/akshar-latin-wght-normal.woff2';
+import '@/styles/global.css';
+const defaultTitle = 'VET lens — Información veterinaria, más fácil de consultar';
+const defaultDescription = 'VET lens prepara una nueva forma de consultar información oficial sobre medicamentos veterinarios. La app está en desarrollo.';
+const { title = defaultTitle, seoTitle = title, description = defaultDescription, image = 'https://vetlens.es/vetlens-og.png', imageAlt = 'VET lens — Información veterinaria, más fácil de consultar', metaType = 'website', noIndex = false, schemaType = 'WebPage', mainEntity } = Astro.props;
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '') || '/';
+const canonicalUrl = new URL(canonicalPath, Astro.site).href;
+const documentTitle = title.toLowerCase().includes('vet lens') ? title : `${title} · VET lens`;
+const websiteId = new URL('/#website', Astro.site).href;
+const organizationId = new URL('/#organization', Astro.site).href;
+const structuredData = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Organization', '@id': organizationId, name: 'VET lens', url: new URL('/', Astro.site).href, logo: new URL('/vetlens.svg', Astro.site).href, email: 'contacto@vetlens.es', sameAs: ['https://www.facebook.com/vetlens.es', 'https://www.instagram.com/vetlens.es/', 'https://www.threads.com/@vetlens.es', 'https://x.com/vetlens_es', 'https://bsky.app/profile/vetlens.es'], contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'soporte@vetlens.es', availableLanguage: 'Spanish' }] },
+  { '@type': 'WebSite', '@id': websiteId, name: 'VET lens', url: new URL('/', Astro.site).href, inLanguage: 'es-ES', publisher: { '@id': organizationId } },
+  { '@type': schemaType, '@id': `${canonicalUrl}#webpage`, name: documentTitle, description, url: canonicalUrl, inLanguage: 'es-ES', isPartOf: { '@id': websiteId }, ...(mainEntity ? { mainEntity } : {}) },
+] };
+const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c');
+---
+<!doctype html><html lang="es"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="theme-color" content="#008B8B" /><meta name="color-scheme" content="light dark" />
+  {!noIndex && <link rel="canonical" href={canonicalUrl} />}{!noIndex && <link rel="alternate" hreflang="es" href={canonicalUrl} />}{noIndex && <meta name="robots" content="noindex, follow" />}
+  <link rel="sitemap" href="/sitemap-index.xml" /><link rel="icon" type="image/svg+xml" href={faviconSvg} /><link rel="manifest" href="/site.webmanifest" /><link rel="preload" href={aksharLatin} as="font" type="font/woff2" crossorigin />
+  <!-- Smart banners de App Store y Google Play: activar cuando la app esté publicada. -->
+  <meta property="og:site_name" content="VET lens" /><meta property="og:locale" content="es_ES" /><meta property="og:title" content={seoTitle} /><meta property="og:description" content={description} /><meta property="og:type" content={metaType} /><meta property="og:url" content={canonicalUrl} /><meta property="og:image" content={image} /><meta property="og:image:alt" content={imageAlt} />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={seoTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:url" content={canonicalUrl} /><meta name="twitter:image" content={image} /><meta name="twitter:image:alt" content={imageAlt} />
+  <title>{documentTitle}</title>{!noIndex && <script type="application/ld+json" set:html={structuredDataJson}></script>}
+  <script is:inline>
+    (() => { try { const saved = localStorage.getItem('vetlens-theme'); const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.dataset.theme = theme; } catch { document.documentElement.dataset.theme = 'light'; } })();
+  </script>
+</head><body><SiteHeader /><slot /><SiteFooter /><script>import '@/scripts/site.js';</script></body></html>

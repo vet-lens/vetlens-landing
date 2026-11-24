@@ -1,0 +1,36 @@
+---
+import vetlensIcon from '@/assets/icons/vetlens.svg?no-inline';
+import medilensIcon from '@/assets/icons/medilens-icon.svg?no-inline';
+import IconTooltip from '@/components/IconTooltip.astro';
+const currentPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+const navItems = [
+  { href: '/presentamos-vet-lens', text: 'Presentación' },
+  { href: '/equipo', text: 'Equipo' },
+  { href: '/contacto', text: 'Contacto' },
+];
+// Enlaces de App Store y Google Play reservados para cuando la app esté publicada.
+// const playUrl = 'https://play.google.com/store/apps/details?id=TODO';
+// const appleUrl = 'https://apps.apple.com/app/idTODO';
+---
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="VET lens, inicio"><img src={vetlensIcon} alt="" width="38" height="38" /><span class="logo-colored">VET lens</span></a>
+  <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  <div class="header-navigation" id="main-navigation" data-navigation>
+    <nav class="main-nav" aria-label="Navegación principal">{navItems.map((item) => <a class="nav-link" href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.text}</a>)}</nav>
+    {/* <div class="store-links"><a href={playUrl}>Google Play</a><a href={appleUrl}>App Store</a></div> */}
+    {/* <nav class="project-status-links" aria-label="Estado del proyecto"><a class="nav-link" href="/changelog">Novedades</a><a class="nav-link" href="/roadmap">Desarrollo</a></nav> */}
+    <div class="header-actions">
+      <nav class="social-links" aria-label="Redes sociales de VET lens">
+        <IconTooltip label="Facebook"><a href="https://www.facebook.com/vetlens.es" target="_blank" rel="noopener noreferrer" aria-label="VET lens en Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a></IconTooltip>
+        <IconTooltip label="Instagram"><a href="https://www.instagram.com/vetlens.es/" target="_blank" rel="noopener noreferrer" aria-label="VET lens en Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a></IconTooltip>
+        <IconTooltip label="Threads"><a href="https://www.threads.com/@vetlens.es" target="_blank" rel="noopener noreferrer" aria-label="VET lens en Threads"><i class="ph ph-threads-logo" aria-hidden="true"></i></a></IconTooltip>
+        <IconTooltip label="X"><a href="https://x.com/vetlens_es" target="_blank" rel="noopener noreferrer" aria-label="VET lens en X"><i class="ph ph-x-logo" aria-hidden="true"></i></a></IconTooltip>
+        <IconTooltip label="Bluesky"><a href="https://bsky.app/profile/vetlens.es" target="_blank" rel="noopener noreferrer" aria-label="VET lens en Bluesky"><i class="ph ph-butterfly" aria-hidden="true"></i></a></IconTooltip>
+      </nav>
+      <div class="header-end-actions">
+      <div class="theme-control"><IconTooltip label="Cambiar a modo oscuro"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar a modo oscuro"><i class="ph ph-moon" aria-hidden="true" data-theme-icon></i></button></IconTooltip></div>
+      <div class="partner-action"><IconTooltip label="MEDI lens"><a href="https://medilens.es" target="_blank" rel="noopener noreferrer" aria-label="Visitar MEDI lens"><img src={medilensIcon} alt="" width="38" height="38" /></a></IconTooltip></div>
+      </div>
+    </div>
+  </div>
+</div></header>

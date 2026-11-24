@@ -1,0 +1,40 @@
+{
+  "name": "vetlens-landing",
+  "description": "Sitio web de VET lens, un proyecto en desarrollo para consultar información sobre medicamentos veterinarios.",
+  "homepage": "https://vetlens.es/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vet-lens/vetlens-landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vet-lens/vetlens-landing/issues"
+  },
+  "keywords": [
+    "vetlens",
+    "astro",
+    "veterinaria",
+    "medicamentos veterinarios",
+    "sitio-web",
+    "landing-page"
+  ],
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.3",
+    "npm": ">=11.3.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/akshar": "5.3.1",
+    "@phosphor-icons/web": "2.1.2"
+  },
+  "devDependencies": {
+    "@astrojs/netlify": "8.2.14",
+    "@astrojs/sitemap": "3.7.5",
+    "astro": "7.4.12"
+  }
+}
