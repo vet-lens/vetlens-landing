@@ -1,6 +1,8 @@
 ---
 import SiteHeader from '@/components/SiteHeader.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
+import PrivacyConsent from '@/components/PrivacyConsent.astro';
+import umamiScriptUrl from '@/scripts/umami.js?url&no-inline';
 import faviconSvg from '@/assets/icons/vetlens.svg?no-inline';
 import '@fontsource-variable/akshar';
 import '@phosphor-icons/web/regular';
@@ -30,6 +32,7 @@ const structuredData = { '@context': 'https://schema.org', '@graph': [
   { '@type': schemaType, '@id': `${canonicalUrl}#webpage`, name: documentTitle, description, url: canonicalUrl, inLanguage: 'es-ES', isPartOf: { '@id': websiteId }, ...(mainEntity ? { mainEntity } : {}) },
 ] };
 const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c');
+const isProduction = import.meta.env.PROD;
 ---
 <!doctype html><html lang="es"><head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="theme-color" content="#008B8B" /><meta name="color-scheme" content="light dark" />
@@ -46,4 +49,4 @@ const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c
   <script is:inline>
     (() => { try { const saved = localStorage.getItem('vetlens-theme'); const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.dataset.theme = theme; } catch { document.documentElement.dataset.theme = 'light'; } })();
   </script>
-</head><body><SiteHeader /><slot /><SiteFooter /><script>import '@/scripts/site.js';</script></body></html>
+</head><body><SiteHeader /><slot /><PrivacyConsent analyticsSrc={isProduction ? umamiScriptUrl : ''} /><SiteFooter /><script>import '@/scripts/site.js';</script></body></html>
