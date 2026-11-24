@@ -36,7 +36,8 @@ function initializePrivacyConsent() {
     const script = document.createElement('script');
     script.src = analyticsSrc;
     script.async = true;
-    script.dataset.websiteId = 'f708bd69-3f66-47c0-9d0f-100a118e2b14';
+    script.fetchPriority = 'low';
+    script.dataset.websiteId = 'd93d3abb-dfab-42ab-b4d5-30a227225918';
     script.dataset.hostUrl = 'https://umami.qu4k3.com';
     script.dataset.vetlensUmami = '';
     document.head.append(script);

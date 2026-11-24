@@ -1313,13 +1313,86 @@ a.roadmap-version:hover { color: var(--brand-strong); border-color: var(--brand-
 .launch-status > i, .launch-status strong { color: var(--brand-strong); }
 .launch-status strong { font-weight: 600; }
 .launch-status > span { color: var(--text-2); }
-.vetlens-launch-preview { position: relative; display: grid; justify-items: center; gap: 22px; width: min(100%, 450px); margin: 0; padding: clamp(30px, 5vw, 56px); background: var(--surface-raised); border: 1px solid var(--border); border-radius: 32px; box-shadow: var(--shadow); text-align: center; }
-.vetlens-launch-preview::before { position: absolute; z-index: 0; inset: 10% 12%; border-radius: 50%; background: color-mix(in srgb, var(--brand), transparent 88%); content: ''; }
-.vetlens-launch-preview .hero-image { z-index: 1; width: clamp(150px, 18vw, 220px); height: auto; filter: drop-shadow(0 18px 22px rgba(0,0,0,.15)); }
-.vetlens-launch-preview figcaption { position: relative; z-index: 1; display: grid; gap: 2px; }
-.vetlens-launch-preview figcaption strong { font-size: 1.45rem; }
-.vetlens-launch-preview figcaption > span:last-child { color: var(--text-2); }
-.launch-preview-kicker { color: var(--brand-strong); font-size: .82rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.vetlens-abstract-visual {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  inline-size: min(100%, 490px);
+  aspect-ratio: 1;
+  margin: 0;
+}
+.vetlens-abstract-visual::before {
+  position: absolute;
+  z-index: -1;
+  inset: 9%;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--brand), transparent 88%);
+  filter: blur(48px);
+  content: '';
+}
+.vetlens-abstract-art {
+  position: relative;
+  display: grid;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  background: radial-gradient(circle, color-mix(in oklab, var(--brand), transparent 93%) 0 34%, transparent 68%);
+}
+.abstract-halo {
+  position: absolute;
+  inline-size: 55%;
+  aspect-ratio: 1;
+  background: color-mix(in oklab, var(--brand), transparent 89%);
+  border-radius: 50%;
+  filter: blur(28px);
+}
+.abstract-orbit {
+  position: absolute;
+  border: 1px solid color-mix(in oklab, var(--brand), transparent 72%);
+  border-radius: 50%;
+}
+.abstract-orbit-wide { inline-size: 88%; block-size: 53%; transform: rotate(-34deg); }
+.abstract-orbit-tall { inline-size: 64%; block-size: 92%; border-color: color-mix(in oklab, var(--brand), transparent 84%); transform: rotate(34deg); }
+.abstract-orbit-dot { position: absolute; inline-size: 11px; aspect-ratio: 1; background: var(--brand); border: 3px solid var(--page-bg); border-radius: 50%; box-shadow: 0 0 0 1px color-mix(in oklab, var(--brand), transparent 58%); }
+.abstract-orbit-dot-one { inset-block-start: 17%; inset-inline-end: 24%; }
+.abstract-orbit-dot-two { inset-block-end: 21%; inset-inline-start: 19%; inline-size: 8px; background: color-mix(in oklab, var(--brand), white 34%); }
+.abstract-logo {
+  position: relative;
+  display: grid;
+  inline-size: clamp(138px, 21vw, 210px);
+  aspect-ratio: 1;
+  padding: 8px;
+  place-items: center;
+  background: var(--surface-raised);
+  border: 1px solid color-mix(in oklab, var(--brand), var(--border) 78%);
+  border-radius: 32px;
+  box-shadow: 0 22px 54px rgba(0, 80, 80, .20), 0 4px 12px rgba(20, 40, 40, .08);
+  transform: rotate(-5deg);
+}
+.abstract-logo img { display: block; inline-size: 100%; block-size: 100%; border-radius: 24px; }
+.abstract-node {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  inline-size: clamp(48px, 6vw, 64px);
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--brand-strong);
+  background: var(--surface-raised);
+  border: 1px solid color-mix(in oklab, var(--brand), var(--border) 74%);
+  border-radius: 13px;
+  box-shadow: 0 12px 28px rgba(20, 65, 65, .12);
+  font-size: 1.55rem;
+}
+.abstract-node-species { inset-block-start: 14%; inset-inline-end: 15%; transform: rotate(9deg); }
+.abstract-node-care { inset-block-end: 17%; inset-inline-start: 13%; transform: rotate(-9deg); }
+.abstract-node-data { inset-block-start: 29%; inset-inline-start: 8%; inline-size: clamp(42px, 5vw, 54px); font-size: 1.3rem; }
+.abstract-source { position: absolute; z-index: 1; inset-block-end: 7%; inset-inline-end: 6%; display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; color: var(--brand-strong); background: var(--surface-raised); border: 1px solid var(--border); border-radius: 13px; box-shadow: 0 10px 24px rgba(20, 65, 65, .10); font-size: .82rem; font-weight: 500; transform: rotate(4deg); }
+.abstract-source i { color: var(--brand-strong); font-size: 1.05rem; }
+@media (max-width: 639px) {
+  .abstract-logo { inline-size: clamp(138px, 42vw, 195px); }
+}
 .launch-section-heading { width: min(740px, 100%); margin: 0 auto 28px; text-align: center; }
 .launch-section-heading h2 { margin: 8px 0; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 500; }
 .launch-section-heading > p { margin: 0; color: var(--text-2); }
@@ -1339,15 +1412,15 @@ a.roadmap-version:hover { color: var(--brand-strong); border-color: var(--brand-
 
 
 .related-app-section { width: min(1200px, calc(100% - 64px)); margin-block: clamp(48px, 7vw, 88px); margin-inline: auto; }
-.related-app-card { display: flex; align-items: center; gap: 22px; padding: clamp(22px, 3vw, 32px); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; }
-.related-app-card > img { display: block; width: 38px; height: 38px; flex: 0 0 auto; }
+.related-app-card { display: flex; align-items: center; gap: 28px; padding: clamp(22px, 3vw, 32px); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; }
 .related-app-copy { flex: 1; min-width: 0; }
 .related-app-copy h2 { margin: 4px 0 2px; font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 500; line-height: 1.3; }
 .related-app-copy p { margin: 0; color: var(--text-2); }
+.related-app-link { display: inline-flex; align-items: center; gap: 9px; flex: 0 0 auto; margin-inline-start: auto; white-space: nowrap; }
 .custom-home-content .news-wrapper { padding-block-end: 24px; }
 @media (max-width: 639px) {
   .related-app-section { width: calc(100% - 40px); margin-block-end: 48px; }
   .related-app-card { align-items: flex-start; flex-wrap: wrap; gap: 14px; padding: 20px; }
-  .related-app-copy { flex-basis: calc(100% - 54px); }
-  .related-app-link { margin-inline-start: 52px; }
+  .related-app-copy { flex-basis: 100%; }
+  .related-app-link { margin-inline-start: 0; }
 }
