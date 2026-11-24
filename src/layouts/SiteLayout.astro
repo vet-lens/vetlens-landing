@@ -8,14 +8,14 @@ import '@fontsource-variable/akshar';
 import '@phosphor-icons/web/regular';
 import aksharLatin from '@fontsource-variable/akshar/files/akshar-latin-wght-normal.woff2';
 import '@/styles/global.css';
-const defaultTitle = 'VET lens — Información veterinaria, más fácil de consultar';
+const defaultTitle = 'VET lens — Escanea y conoce tus medicamentos veterinarios';
 const defaultDescription = 'VET lens prepara una nueva forma de consultar información oficial sobre medicamentos veterinarios. La app está en desarrollo.';
 const {
   title = defaultTitle,
   seoTitle = title,
   description = defaultDescription,
-  // image = 'https://vetlens.es/vetlens-og.png', // Reactivar cuando se añada la nueva imagen Open Graph.
-  // imageAlt = 'VET lens — Información veterinaria, más fácil de consultar',
+  image = 'https://vetlens.es/vetlens-og.png',
+  imageAlt = 'VET lens — Escanea y conoce tus medicamentos veterinarios',
   metaType = 'website',
   noIndex = false,
   schemaType = 'WebPage',
@@ -40,11 +40,9 @@ const isProduction = import.meta.env.PROD;
   <link rel="sitemap" href="/sitemap-index.xml" /><link rel="icon" type="image/svg+xml" href={faviconSvg} /><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" /><link rel="manifest" href="/site.webmanifest" /><link rel="preload" href={aksharLatin} as="font" type="font/woff2" crossorigin />
   <!-- Smart banners de App Store y Google Play: activar cuando la app esté publicada. -->
   <meta property="og:site_name" content="VET lens" /><meta property="og:locale" content="es_ES" /><meta property="og:title" content={seoTitle} /><meta property="og:description" content={description} /><meta property="og:type" content={metaType} /><meta property="og:url" content={canonicalUrl} />
-  <meta name="twitter:card" content="summary" /><meta name="twitter:title" content={seoTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:url" content={canonicalUrl} />
-  <!-- Open Graph image pending: restore these tags when the new asset is added.
-  <meta property="og:image" content="https://vetlens.es/vetlens-og.png" /><meta property="og:image:alt" content="VET lens — Información veterinaria, más fácil de consultar" />
-  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://vetlens.es/vetlens-og.png" /><meta name="twitter:image:alt" content="VET lens — Información veterinaria, más fácil de consultar" />
-  -->
+  <meta name="twitter:site" content="@vetlens_es" /><meta name="twitter:title" content={seoTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:url" content={canonicalUrl} />
+  <meta property="og:image" content={image} /><meta property="og:image:alt" content={imageAlt} />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content={image} /><meta name="twitter:image:alt" content={imageAlt} />
   <title>{documentTitle}</title>{!noIndex && <script type="application/ld+json" set:html={structuredDataJson}></script>}
   <script is:inline>
     (() => { try { const saved = localStorage.getItem('vetlens-theme'); const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.dataset.theme = theme; } catch { document.documentElement.dataset.theme = 'light'; } })();
