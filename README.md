@@ -2,7 +2,7 @@
 
   # VET lens
 
-  **Información veterinaria, más fácil de consultar**
+  **Escanea y conoce tus medicamentos veterinarios**
 
   <p>App en desarrollo · Próximamente</p>
 
