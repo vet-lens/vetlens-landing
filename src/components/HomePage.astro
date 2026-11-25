@@ -1,22 +1,10 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import vetlensIcon from '@/assets/icons/vetlens.svg?no-inline';
-const features = [
-  { icon: 'ph-magnifying-glass', title: 'Encuentra medicamentos veterinarios', details: 'La búsqueda podrá localizar medicamentos por nombre, laboratorio, principio activo, número de registro, código nacional o especie de destino.' },
-  { icon: 'ph-file-text', title: 'Consulta información oficial', details: 'Estamos preparando el acceso a datos del registro veterinario, como presentaciones, condiciones de prescripción, indicaciones y documentación oficial.' },
-  { icon: 'ph-paw-print', title: 'Información por especie', details: 'La información veterinaria podrá consultarse atendiendo a las especies de destino e incluyendo, cuando corresponda, los tiempos de espera.' },
-  { icon: 'ph-barcode', title: 'Búsqueda adaptada al registro', details: 'La app está en desarrollo para facilitar consultas por número de registro, código nacional y otros datos del medicamento.' },
-  { icon: 'ph-first-aid-kit', title: 'Botiquín digital', details: 'Podrás organizar los medicamentos de tus animales y tener su información a mano cuando la necesites.' },
-  { icon: 'ph-person-arms-spread', title: 'Una app accesible', details: 'Estamos diseñando una experiencia clara y accesible, con textos legibles y una navegación sencilla.' },
-];
-const faq = [
-  { question: '¿Cuándo estará disponible VET lens?', answer: 'La app está en desarrollo. Publicaremos aquí las novedades cuando se acerque su lanzamiento.' },
-  { question: '¿Qué información veterinaria incluirá?', answer: 'Estamos preparando consultas de datos públicos del registro de CIMA Vet, como especies de destino, presentaciones, condiciones de uso y documentación oficial.' },
-  { question: '¿Para quién está pensada?', answer: 'Queremos facilitar la consulta de información veterinaria a profesionales y a personas responsables de animales, respetando el propósito de cada documento oficial.' },
-  { question: '¿VET lens sustituirá al veterinario?', answer: 'No. La información de la app será informativa y no sustituirá el diagnóstico ni las indicaciones de un veterinario.' },
-  { question: '¿En qué tiendas estará disponible?', answer: 'Aún no hay enlaces de descarga: se añadirán cuando la app esté lista para publicarse en Android y iOS.' },
-  { question: '¿Cómo puedo contactar con el equipo?', answer: 'Puedes escribirnos desde <a href="/contacto">la página de contacto</a>.' },
-];
+import Sponsorship from './Sponsorship.astro';
+import Features from './Features.astro';
+import FrequentlyAskedQuestions from './FrequentlyAskedQuestions.astro';
+import PressNews from './PressNews.astro';
 ---
 <SiteLayout title="VET lens — Escanea y conoce tus medicamentos veterinarios" seoTitle="VET lens — Escanea y conoce tus medicamentos veterinarios" description="VET lens prepara una nueva forma de consultar información oficial sobre medicamentos veterinarios. La app está en desarrollo.">
 <main>
@@ -52,10 +40,10 @@ const faq = [
       </figure>
     </div>
   </section>
-  <section class="feature-section" aria-label="Lo que prepara VET lens"><header class="launch-section-heading"><span class="page-eyebrow">En preparación</span><h2>¿Qué ofrecerá la app?</h2><p>Estas funciones están en desarrollo y se concretarán antes del lanzamiento.</p></header><div class="feature-grid">{features.map((feature) => <article class="feature-card feature-card-upcoming"><div class="feature-icon" aria-hidden="true"><i class:list={['ph', feature.icon]}></i></div><span class="feature-status">Próximamente</span><h3>{feature.title}</h3><p>{feature.details}</p></article>)}</div></section>
-  <section class="custom-home-content"><section class="faq-wrapper" aria-labelledby="faq-heading"><h2 id="faq-heading">Preguntas frecuentes</h2><div class="faq">{faq.map((item) => <details><summary>{item.question}</summary><p set:html={item.answer}></p></details>)}</div></section>
-    <section class="sponsorship-wrapper" aria-labelledby="sponsorship-heading"><h2 id="sponsorship-heading">Colabora con el proyecto</h2><div class="sponsorship"><p>VET lens está en desarrollo. Si quieres apoyar el proyecto o proponer una colaboración, escríbenos.</p><a class="custom-button" href="/patrocina-vet-lens">Colabora con <span>VET lens</span></a></div></section>
-    <section class="news-wrapper" aria-labelledby="news-heading"><h2 id="news-heading">Novedades del proyecto</h2><p>Compartiremos aquí las noticias de VET lens cuando se acerque el lanzamiento.</p><p class="news-contact"><span>Contacto</span><a href="mailto:contacto@vetlens.es"><i class="ph ph-envelope-simple" aria-hidden="true"></i> contacto@vetlens.es</a></p></section>
+  <Features />
+  <section class="custom-home-content"><FrequentlyAskedQuestions />
+    <Sponsorship />
+    <PressNews />
     {/* Newsletter desactivada hasta configurar un servicio para VET lens. */}
   </section>
   <section class="related-app-section" aria-labelledby="related-app-title">
@@ -63,7 +51,7 @@ const faq = [
       <div class="related-app-copy">
         <span class="page-eyebrow">También del equipo</span>
         <h2 id="related-app-title">¿Buscas información sobre medicamentos de uso humano?</h2>
-        <p>Conoce MEDI lens, nuestra app para consultar información sobre medicamentos para personas.</p>
+        <p>Conoce <span class="logo-colored medilens-logo-colored">MEDI lens</span>, nuestra app para consultar información sobre medicamentos para personas.</p>
       </div>
       <a class="custom-button related-app-link" href="https://medilens.es" target="_blank" rel="noopener noreferrer">
         Descubre MEDI lens <i class="ph ph-arrow-square-out" aria-hidden="true"></i>

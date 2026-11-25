@@ -1,0 +1,11 @@
+---
+const faq = [
+  { question: '¿Cuándo estará disponible VET lens?', answer: 'La app está en desarrollo. Publicaremos aquí las novedades cuando se acerque su lanzamiento.' },
+  { question: '¿Qué información veterinaria incluirá?', answer: 'Estamos preparando consultas de datos públicos del registro de CIMA Vet, como especies de destino, presentaciones, condiciones de uso y documentación oficial.' },
+  { question: '¿Para quién está pensada?', answer: 'Queremos facilitar la consulta de información veterinaria a profesionales y a personas responsables de animales, respetando el propósito de cada documento oficial.' },
+  { question: '¿VET lens sustituirá al veterinario?', answer: 'No. La información de la app será informativa y no sustituirá el diagnóstico ni las indicaciones de un veterinario.' },
+  { question: '¿En qué tiendas estará disponible?', answer: 'Aún no hay enlaces de descarga: se añadirán cuando la app esté lista para publicarse en Android y iOS.' },
+  { question: '¿Cómo puedo contactar con el equipo?', answer: 'Puedes escribirnos desde <a href="/contacto">la página de contacto</a>.' },
+];
+---
+<section class="faq-wrapper" aria-labelledby="faq-heading"><h2 id="faq-heading">Preguntas frecuentes</h2><div class="faq">{faq.map((item) => <details><summary>{item.question}</summary><p set:html={item.answer}></p></details>)}</div></section>
