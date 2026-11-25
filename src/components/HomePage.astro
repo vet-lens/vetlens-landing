@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import vetlensIcon from '@/assets/icons/vetlens.svg?no-inline';
+import Sponsorship from './Sponsorship.astro';
 const features = [
   { icon: 'ph-magnifying-glass', title: 'Encuentra medicamentos veterinarios', details: 'La búsqueda podrá localizar medicamentos por nombre, laboratorio, principio activo, número de registro, código nacional o especie de destino.' },
   { icon: 'ph-file-text', title: 'Consulta información oficial', details: 'Estamos preparando el acceso a datos del registro veterinario, como presentaciones, condiciones de prescripción, indicaciones y documentación oficial.' },
@@ -54,8 +55,22 @@ const faq = [
   </section>
   <section class="feature-section" aria-label="Lo que prepara VET lens"><header class="launch-section-heading"><span class="page-eyebrow">En preparación</span><h2>¿Qué ofrecerá la app?</h2><p>Estas funciones están en desarrollo y se concretarán antes del lanzamiento.</p></header><div class="feature-grid">{features.map((feature) => <article class="feature-card feature-card-upcoming"><div class="feature-icon" aria-hidden="true"><i class:list={['ph', feature.icon]}></i></div><span class="feature-status">Próximamente</span><h3>{feature.title}</h3><p>{feature.details}</p></article>)}</div></section>
   <section class="custom-home-content"><section class="faq-wrapper" aria-labelledby="faq-heading"><h2 id="faq-heading">Preguntas frecuentes</h2><div class="faq">{faq.map((item) => <details><summary>{item.question}</summary><p set:html={item.answer}></p></details>)}</div></section>
-    <section class="sponsorship-wrapper" aria-labelledby="sponsorship-heading"><h2 id="sponsorship-heading">Colabora con el proyecto</h2><div class="sponsorship"><p>VET lens está en desarrollo. Si quieres apoyar el proyecto o proponer una colaboración, escríbenos.</p><a class="custom-button" href="/patrocina-vet-lens">Colabora con <span>VET lens</span></a></div></section>
-    <section class="news-wrapper" aria-labelledby="news-heading"><h2 id="news-heading">Novedades del proyecto</h2><p>Compartiremos aquí las noticias de VET lens cuando se acerque el lanzamiento.</p><p class="news-contact"><span>Contacto</span><a href="mailto:contacto@vetlens.es"><i class="ph ph-envelope-simple" aria-hidden="true"></i> contacto@vetlens.es</a></p></section>
+    <Sponsorship />
+    <section class="news-wrapper" aria-labelledby="news-heading">
+      <h2 id="news-heading">Prensa y Noticias</h2>
+      <div class="news-layout">
+        <a class="news-placeholder" href="#" aria-label="Ejemplo de noticia de prensa sobre VET lens">
+          <div class="news-media"><span class="news-media-icon" aria-hidden="true"><i class="ph ph-newspaper"></i></span><span class="news-media-name">Nombre del medio</span><span class="news-example-tag">Ejemplo</span></div>
+          <div class="news-article-image" aria-hidden="true"><i class="ph ph-paw-print"></i></div>
+          <div class="news-article-copy"><p class="news-article-category">Salud veterinaria y tecnología</p><h3>VET lens prepara una nueva forma de consultar medicamentos veterinarios</h3><p class="news-article-excerpt">Un proyecto para acercar información oficial de medicamentos a quienes cuidan de los animales.</p></div>
+        </a>
+        <div class="news-copy">
+          <span class="news-copy-eyebrow">Para medios y periodistas</span>
+          <p>¿Preparas un reportaje sobre salud animal o tecnología? Te contamos cómo <span class="logo-colored">VET lens</span> facilitará el acceso a información oficial sobre medicamentos veterinarios.</p>
+          <div class="news-contact"><span>Contacto de prensa</span><a href="mailto:prensa@vetlens.es"><i class="ph ph-envelope-simple" aria-hidden="true"></i> prensa@vetlens.es</a></div>
+        </div>
+      </div>
+    </section>
     {/* Newsletter desactivada hasta configurar un servicio para VET lens. */}
   </section>
   <section class="related-app-section" aria-labelledby="related-app-title">
@@ -63,7 +78,7 @@ const faq = [
       <div class="related-app-copy">
         <span class="page-eyebrow">También del equipo</span>
         <h2 id="related-app-title">¿Buscas información sobre medicamentos de uso humano?</h2>
-        <p>Conoce MEDI lens, nuestra app para consultar información sobre medicamentos para personas.</p>
+        <p>Conoce <span class="logo-colored medilens-logo-colored">MEDI lens</span>, nuestra app para consultar información sobre medicamentos para personas.</p>
       </div>
       <a class="custom-button related-app-link" href="https://medilens.es" target="_blank" rel="noopener noreferrer">
         Descubre MEDI lens <i class="ph ph-arrow-square-out" aria-hidden="true"></i>
